@@ -1,30 +1,37 @@
 /*
  * @Date: 2023-06-28 11:57:07
  * @LastEditors: jinqili0310 jinqi.li.310@gmail.com
- * @LastEditTime: 2023-06-28 15:46:55
- * @FilePath: \Scripts\vapeplus.com\felho-fullpage\src\app\tinctures\page.js
+ * @LastEditTime: 2023-07-05 10:56:45
+ * @FilePath: \felho-fullpage\src\app\tinctures\page.js
  */
 'use client'
 
 import { useState, useEffect, useRef } from "react";
 import ReactFullpage from "@fullpage/react-fullpage";
-import ReactPlayer from 'react-player';
 import '../fullvideo.css';
-// import styled from "styled-components";
-// import Vimeo from "@u-wave/react-vimeo";
+import BackgroundVideo from "../components/videoBg";
 
 export default function Tinctures() {
-    const [fullpages, setFullpages] = useState([
+    const fullpages = [
         {
-            text: "DREAM"
+            h1: `Felhö DREAM`,
+            h5: "Full Spectrum Tincture",
+            p: "Our Dream tincture will have you calm and relaxed - ready for a good night's sleep! The combination of CBD + CBN provides a calm and relaxing experience that puts your head in the right place for a full-8 hours of rest.",
+            url: "https://www.felho.com/dream.html",
         },
         {
-            text: "RELAX"
+            h1: "Felhö RELAX",
+            h5: "Hemp Supplement",
+            p: "With 1000mg of Broad-Spectrum CBD oil, you will feel lighter than air. Our CBD tincture provides the perfect effects for those who are looking to relax after a long day of work or help with any stressful situation.",
+            url: "https://www.felho.com/relax.html",
         },
         {
-            text: "VITAL"
+            h1: "Felhö VITAL",
+            h5: "Hemp Supplement",
+            p: "With the carefully curated combination of CBD and CBG, you will feel calm, comfortable, and uplifted. CBG delivers an optimal sense of relief from sore muscles/ joints due to the anti-inflammatory nature of CBG. On top of that, our wellness blend acts as a great hunger manipulator to help those looking to increase their appetite.",
+            url: "https://www.felho.com/vital.html",
         },
-    ]);
+    ];
 
     const colors = [
         "#fff",
@@ -33,11 +40,11 @@ export default function Tinctures() {
     ];
 
     const videos = [
-        "https://vimeo.com/840614347?share=copy",
-        "https://vimeo.com/840616506?share=copy",
-        "https://vimeo.com/840614609?share=copy",
+        "841317619",
+        "841318121",
+        "841314896",
     ];
-
+    
     const [activeSection, setActiveSection] = useState(0);
     const fullpageRef = useRef(null);
 
@@ -64,22 +71,18 @@ export default function Tinctures() {
                 sectionsColor={colors}
                 render={() => (
                     <ReactFullpage.Wrapper ref={fullpageRef}>
-                        {videos.map((url, index) => (
-                             <div className={`section section_${index}`} key={index}>
-                                 <ReactPlayer 
-                                    url={url} 
-                                    loop={true} 
-                                    controls={false} 
-                                    muted={true} 
-                                    playing={activeSection === index} 
-                                    width="100%" 
-                                    height="100%" 
-                                    style={{ objectFit: 'cover' }}
-                                />
-                                 <div className="video_text">
-                                        <h1>{fullpages[index].text}</h1>
-                                 </div>
-                             </div>
+                        {videos.map((id, index) => (
+                            <div className={`section section_${index}`} key={index}>
+                                <BackgroundVideo videoSrc={id} playing={activeSection === index} />
+                                <div className="video_text_bg">
+                                    <div className="video_text">
+                                        <h1>{fullpages[index].h1}</h1>
+                                        <h5>{fullpages[index].h5}</h5>
+                                        <p>{fullpages[index].p}</p>
+                                        <a href={fullpages[index].url}>SHOP NOW</a>
+                                    </div>
+                                </div>
+                            </div>
                         ))}
                     </ReactFullpage.Wrapper>
                 )}
