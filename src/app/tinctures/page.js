@@ -1,7 +1,7 @@
 /*
  * @Date: 2023-06-28 11:57:07
  * @LastEditors: jinqili0310 jinqi.li.310@gmail.com
- * @LastEditTime: 2023-07-05 13:02:50
+ * @LastEditTime: 2023-07-05 13:08:46
  * @FilePath: \felho-fullpage\src\app\tinctures\page.js
  */
 'use client'
@@ -73,14 +73,14 @@ export default function Tinctures() {
                     <ReactFullpage.Wrapper ref={fullpageRef}>
                         {videos.map((id, index) => (
                             <div className={`section section_${index}`} key={index}>
-                                <a href={fullpages[index].url}>
+                                <a href={fullpages[index].url} target="_parent">
                                     <BackgroundVideo videoSrc={id} playing={activeSection === index} />
                                     <div className="video_text_bg">
                                         <div className="video_text">
                                             <h1>{fullpages[index].h1}</h1>
                                             <h5>{fullpages[index].h5}</h5>
                                             <p>{fullpages[index].p}</p>
-                                            <a href={fullpages[index].url}>SHOP NOW</a>
+                                            <a href={fullpages[index].url} target="_parent">SHOP NOW</a>
                                         </div>
                                     </div>
                                 </a>
