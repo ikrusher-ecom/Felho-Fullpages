@@ -41,7 +41,6 @@ export default function BackgroundVideo({ videoSrc, playing }) {
                 zIndex: "-1",
             }}>
             <Video videoSrc={videoSrc} playing={playing} />
-            {console.log(videoSrc, playing)}
         </div>
     );
 }
