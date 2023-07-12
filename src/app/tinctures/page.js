@@ -1,7 +1,7 @@
 /*
  * @Date: 2023-06-28 11:57:07
  * @LastEditors: jinqili0310 jinqi.li.310@gmail.com
- * @LastEditTime: 2023-07-12 14:19:06
+ * @LastEditTime: 2023-07-12 15:24:28
  * @FilePath: \felho-fullpage\src\app\tinctures\page.js
  */
 'use client'
@@ -57,23 +57,23 @@ export default function Tinctures() {
         }
     }, [activeSection]);
 
-    useEffect(() => {
-        function handleWheel(event) {
-            if (
-                (event.deltaY < 0 && window.scrollY <= 0) ||
-                (event.deltaY > 0 && window.scrollY + window.innerHeight >= document.body.offsetHeight)
-            ) {
-                window.parent.postMessage({ message: 'scrollParent', deltaY: event.deltaY }, '*');
-            }
-        }
+    // useEffect(() => {
+    //     function handleWheel(event) {
+    //         if (
+    //             (event.deltaY < 0 && window.scrollY <= 0) ||
+    //             (event.deltaY > 0 && window.scrollY + window.innerHeight >= document.body.offsetHeight)
+    //         ) {
+    //             window.parent.postMessage({ message: 'scrollParent', deltaY: event.deltaY }, '*');
+    //         }
+    //     }
 
-        window.addEventListener('wheel', handleWheel);
+    //     window.addEventListener('wheel', handleWheel);
 
-        // cleanup function
-        return () => {
-            window.removeEventListener('wheel', handleWheel);
-        };
-    }, []);
+    //     // cleanup function
+    //     return () => {
+    //         window.removeEventListener('wheel', handleWheel);
+    //     };
+    // }, []);
 
     if (!fullpages.length) return null;
 
@@ -97,7 +97,7 @@ export default function Tinctures() {
                                     <BackgroundVideo videoSrc={id} playing={activeSection === index} />
                                     <CSSTransition
                                         in={activeSection === index}
-                                        timeout={1000}
+                                        timeout={3000}
                                         classNames={`video-text-${index % 2 === 0 ? 'right' : 'left'}`}
                                         unmountOnExit
                                     >
