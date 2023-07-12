@@ -1,16 +1,32 @@
-import React from "react"
-import Vimeo from "@u-wave/react-vimeo"
+import React, { useEffect, useState } from 'react'
+import Vimeo from '@u-wave/react-vimeo';
 
 function Video({ videoSrc, playing }) {
+    const [vimeoPlayer, setVimeoPlayer] = useState(null);
+
+    useEffect(() => {
+        if (vimeoPlayer) {
+            if (playing) {
+                vimeoPlayer.getPaused().then(paused => {
+                    if (paused) {
+                        vimeoPlayer.play();
+                    }
+                });
+            } else {
+                vimeoPlayer.pause();
+            }
+        }
+    }, [playing, vimeoPlayer]);
+
     return (
         <Vimeo
+            onReady={setVimeoPlayer}
             background={true}
             height={943}
             loop={true}
             responsive
             video={videoSrc}
             width={1920}
-            playing={playing}
             style={{
                 height: "49.11vw",
                 left: "50%",

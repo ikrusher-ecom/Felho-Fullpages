@@ -104,3 +104,43 @@
 .section_2 .video_text a {
     background-color: #FFC187;
 }
+
+/* For dream and vital sections, move in from the right */
+
+.video-text-right-enter {
+    transform: translateX(100%);
+}
+
+.video-text-right-enter-active {
+    transform: translateX(0%);
+    transition: transform 1000ms ease-in-out;
+}
+
+.video-text-right-exit {
+    transform: translateX(0%);
+}
+
+.video-text-right-exit-active {
+    transform: translateX(100%);
+    transition: transform 1000ms ease-in-out;
+}
+
+/* For relax section, move in from the left */
+
+.video-text-left-enter {
+    transform: translateX(-100%);
+}
+
+.video-text-left-enter-active {
+    transform: translateX(0%);
+    transition: transform 1000ms ease-in-out;
+}
+
+.video-text-left-exit {
+    transform: translateX(0%);
+}
+
+.video-text-left-exit-active {
+    transform: translateX(-100%);
+    transition: transform 1000ms ease-in-out;
+}

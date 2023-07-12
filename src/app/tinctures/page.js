@@ -1,7 +1,7 @@
 /*
  * @Date: 2023-06-28 11:57:07
  * @LastEditors: jinqili0310 jinqi.li.310@gmail.com
- * @LastEditTime: 2023-07-05 13:08:46
+ * @LastEditTime: 2023-07-12 12:30:02
  * @FilePath: \felho-fullpage\src\app\tinctures\page.js
  */
 'use client'
@@ -10,6 +10,7 @@ import { useState, useEffect, useRef } from "react";
 import ReactFullpage from "@fullpage/react-fullpage";
 import '../fullvideo.css';
 import BackgroundVideo from "../components/videoBg";
+import { CSSTransition } from 'react-transition-group';
 
 export default function Tinctures() {
     const fullpages = [
@@ -45,15 +46,16 @@ export default function Tinctures() {
         "841314896",
     ];
     
-    const [activeSection, setActiveSection] = useState(0);
+    const [activeSection, setActiveSection] = useState(-1);
     const fullpageRef = useRef(null);
 
     useEffect(() => {
-        if (fullpageRef.current) {
-          fullpageRef.current.fullpageApi.moveTo(activeSection + 1);
+        if (activeSection === -1) {
+            setTimeout(() => setActiveSection(0), 50);
+        } else if (fullpageRef.current) {
+            fullpageRef.current.fullpageApi.moveTo(activeSection + 1);
         }
     }, [activeSection]);
-      
 
     if (!fullpages.length) return null;
 
@@ -75,14 +77,21 @@ export default function Tinctures() {
                             <div className={`section section_${index}`} key={index}>
                                 <a href={fullpages[index].url} target="_parent">
                                     <BackgroundVideo videoSrc={id} playing={activeSection === index} />
-                                    <div className="video_text_bg">
-                                        <div className="video_text">
-                                            <h1>{fullpages[index].h1}</h1>
-                                            <h5>{fullpages[index].h5}</h5>
-                                            <p>{fullpages[index].p}</p>
-                                            <a href={fullpages[index].url} target="_parent">SHOP NOW</a>
+                                    <CSSTransition
+                                        in={activeSection === index}
+                                        timeout={1000}
+                                        classNames={`video-text-${index % 2 === 0 ? 'right' : 'left'}`}
+                                        unmountOnExit
+                                    >
+                                        <div className="video_text_bg">
+                                            <div className="video_text">
+                                                <h1>{fullpages[index].h1}</h1>
+                                                <h5>{fullpages[index].h5}</h5>
+                                                <p>{fullpages[index].p}</p>
+                                                <a href={fullpages[index].url} target="_parent">SHOP NOW</a>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </CSSTransition>
                                 </a>
                             </div>
                         ))}
