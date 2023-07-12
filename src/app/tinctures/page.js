@@ -1,7 +1,7 @@
 /*
  * @Date: 2023-06-28 11:57:07
  * @LastEditors: jinqili0310 jinqi.li.310@gmail.com
- * @LastEditTime: 2023-07-12 12:30:02
+ * @LastEditTime: 2023-07-12 14:19:06
  * @FilePath: \felho-fullpage\src\app\tinctures\page.js
  */
 'use client'
@@ -56,6 +56,24 @@ export default function Tinctures() {
             fullpageRef.current.fullpageApi.moveTo(activeSection + 1);
         }
     }, [activeSection]);
+
+    useEffect(() => {
+        function handleWheel(event) {
+            if (
+                (event.deltaY < 0 && window.scrollY <= 0) ||
+                (event.deltaY > 0 && window.scrollY + window.innerHeight >= document.body.offsetHeight)
+            ) {
+                window.parent.postMessage({ message: 'scrollParent', deltaY: event.deltaY }, '*');
+            }
+        }
+
+        window.addEventListener('wheel', handleWheel);
+
+        // cleanup function
+        return () => {
+            window.removeEventListener('wheel', handleWheel);
+        };
+    }, []);
 
     if (!fullpages.length) return null;
 
