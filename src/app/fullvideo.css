@@ -24,7 +24,6 @@
     width: 60%;
     /* height: 60%; */
     aspect-ratio: 38 / 29;
-    color: #fff;
     text-align: left;
     padding: 0 calc(40px + 4vw);
     max-height: 90%;
@@ -39,11 +38,9 @@
     font-weight: 900;
     margin-bottom: 0;
     text-align: left;
-    color: #fff;
 }
 
 .video_text h5 {
-    color: #fff;
     font-size: calc(20px + 1vw);
     line-height: 1;
     font-weight: 600;
@@ -60,9 +57,9 @@
     height: auto;
     font-size: calc(16px + 0.5vw);
     border: none;
-    color: #fff;
     margin: 1em 0;
     z-index: 9;
+    font-weight: 600;
 }
 
 .video_text p {
@@ -73,36 +70,6 @@
 
 .fp-watermark {
     display: none !important;
-}
-
-.section_0 .video_text {
-    background-image: url("../../public/dream-text.png");
-    right: 0;
-    margin-right: -40px;
-}
-
-.section_1 .video_text {
-    background-image: url("../../public/relax-text.png");
-    left: 0;
-    margin-left: -40px;
-}
-
-.section_2 .video_text {
-    background-image: url("../../public/vital-text.png");
-    right: 0;
-    margin-right: -40px;
-}
-
-.section_0 .video_text a {
-    background-color: #B4D6BE;
-}
-
-.section_1 .video_text a {
-    background-color: #CFA4D2;
-}
-
-.section_2 .video_text a {
-    background-color: #FFC187;
 }
 
 /* For dream and vital sections, move in from the right */
@@ -143,4 +110,122 @@
 .video-text-left-exit-active {
     transform: translateX(-100%);
     transition: transform 3000ms ease-in-out;
+}
+
+/* Tinctures */
+
+.tincture-app .video_text h1, .tincture-app .video_text h5, .tincture-app .video_text p, .tincture-app .video_text a {
+    color: #000;
+}
+
+.tincture-app .section_0 .video_text {
+    background-image: url("../../public/dream-text.png");
+    right: 0;
+    margin-right: -40px;
+}
+
+.tincture-app .section_1 .video_text {
+    background-image: url("../../public/relax-text.png");
+    left: 0;
+    margin-left: -40px;
+}
+
+.tincture-app .section_2 .video_text {
+    background-image: url("../../public/vital-text.png");
+    right: 0;
+    margin-right: -40px;
+}
+
+.tincture-app .section_0 .video_text a {
+    background-color: #B4D6BE;
+}
+
+.tincture-app .section_1 .video_text a {
+    background-color: #CFA4D2;
+}
+
+.tincture-app .section_2 .video_text a {
+    background-color: #FFC187;
+}
+
+/* Vaporizers */
+
+.vaporizer-app .video_text h1, .vaporizer-app .video_text h5, .vaporizer-app .video_text p {
+    color: #2C2E35;
+}
+
+.vaporizer-app .video_text a {
+    color: #fff;
+}
+
+.vaporizer-app .section_0 .video_text {
+    background-image: url("../../public/alpha-text.jpg");
+    right: 0;
+    margin-right: -40px;
+}
+
+.vaporizer-app .section_1 .video_text {
+    background-image: url("../../public/quest-text.jpg");
+    left: 0;
+    margin-left: -40px;
+}
+
+.vaporizer-app .section_2 .video_text {
+    background-image: url("../../public/akimbo-text.jpg");
+    right: 0;
+    margin-right: -40px;
+}
+
+.vaporizer-app .section_3 .video_text {
+    background-image: url("../../public/pokit-text.jpg");
+    left: 0;
+    margin-left: -40px;
+}
+
+.vaporizer-app .section_0 .video_text a {
+    background-color: #EC23A0;
+}
+
+.vaporizer-app .section_1 .video_text a {
+    background-color: #1EECBC;
+}
+
+.vaporizer-app .section_2 .video_text a {
+    background-color: #8327C0;
+}
+
+.vaporizer-app .section_3 .video_text a {
+    background-color: #1f2877;
+}
+
+.vaporizer-app .section_3 .video_text h1, .vaporizer-app .section_3 .video_text h5, .vaporizer-app .section_3 .video_text p {
+    color: #fff;
+}
+
+/* Topicals */
+
+.topical-app .video_text h1, .topical-app .video_text h5, .topical-app .video_text p, .topical-app .video_text a {
+    color: #fff;
+}
+
+.topical-app .section_0 .video_text {
+    background-image: url("../../public/calm-text.png");
+    right: 0;
+    margin-right: -40px;
+}
+
+.topical-app .section_1 .video_text {
+    background-image: url("../../public/cool-text.png");
+    left: 0;
+    margin-left: -40px;
+}
+
+.topical-app .section_2 .video_text {
+    background-image: url("../../public/heat-text.png");
+    right: 0;
+    margin-right: -40px;
+}
+
+.topical-app .video_text a {
+    background-color: #2c2e35;
 }
