@@ -1,3 +1,9 @@
+/*
+ * @Date: 2023-06-30 16:05:05
+ * @LastEditors: jinqili0310 jinqi.li.310@gmail.com
+ * @LastEditTime: 2023-07-19 13:51:44
+ * @FilePath: \felho-fullpage\src\app\components\videoBg.js
+ */
 import React, { useEffect, useState } from 'react'
 import Vimeo from '@u-wave/react-vimeo';
 
@@ -28,10 +34,10 @@ function Video({ videoSrc, playing }) {
             video={videoSrc}
             width={1920}
             style={{
-                height: "49.11vw",
+                height: "56.25vw",
                 left: "50%",
                 minHeight: "100vh",
-                minWidth: "203.61vh",
+                minWidth: "177.78vh",
                 position: "absolute",
                 top: "50%",
                 transform: "translate(-50%, -50%)",

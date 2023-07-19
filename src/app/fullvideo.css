@@ -32,7 +32,7 @@
 
 .video_text h1 {
     text-align: left;
-    font-size: calc(40px + 3vw);
+    font-size: 5vw;
     line-height: 1.25;
     letter-spacing: 2px;
     font-weight: 900;
@@ -80,7 +80,7 @@
 
 .video-text-right-enter-active {
     transform: translateX(0%);
-    transition: transform 3000ms ease-in-out;
+    transition: transform 1500ms ease-in-out;
 }
 
 .video-text-right-exit {
@@ -89,7 +89,7 @@
 
 .video-text-right-exit-active {
     transform: translateX(100%);
-    transition: transform 3000ms ease-in-out;
+    transition: transform 1500ms ease-in-out;
 }
 
 /* For relax section, move in from the left */
@@ -100,7 +100,7 @@
 
 .video-text-left-enter-active {
     transform: translateX(0%);
-    transition: transform 3000ms ease-in-out;
+    transition: transform 1500ms ease-in-out;
 }
 
 .video-text-left-exit {
@@ -109,13 +109,13 @@
 
 .video-text-left-exit-active {
     transform: translateX(-100%);
-    transition: transform 3000ms ease-in-out;
+    transition: transform 1500ms ease-in-out;
 }
 
 /* Tinctures */
 
 .tincture-app .video_text h1, .tincture-app .video_text h5, .tincture-app .video_text p, .tincture-app .video_text a {
-    color: #000;
+    color: #fff;
 }
 
 .tincture-app .section_0 .video_text {
