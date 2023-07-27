@@ -1,8 +1,8 @@
 /*
  * @Date: 2023-06-30 16:05:05
  * @LastEditors: jinqili0310 jinqi.li.310@gmail.com
- * @LastEditTime: 2023-07-27 12:09:26
- * @FilePath: \felho-fullpage\src\app\components\videoBg.js
+ * @LastEditTime: 2023-07-27 15:07:53
+ * @FilePath: \felho-fullpage\src\app\components\videoMb.js
  */
 import React, { useEffect, useState } from 'react'
 import Vimeo from '@u-wave/react-vimeo';
@@ -32,10 +32,10 @@ function Video({ videoSrc, playing }) {
             responsive
             video={videoSrc}
             style={{
-                height: "56.25vw",
+                height: "216.41vw",
                 left: "50%",
                 minHeight: "100vh",
-                minWidth: "177.78vh",
+                minWidth: "46.21vh",
                 position: "absolute",
                 top: "50%",
                 transform: "translate(-50%, -50%)",
@@ -45,7 +45,7 @@ function Video({ videoSrc, playing }) {
     );
 }
 
-export default function BackgroundVideo({ videoSrc, playing }) {
+export default function BackgroundVideoMobile({ videoSrc, playing }) {
     return (
         <div
             style={{

@@ -1,7 +1,7 @@
 /*
  * @Date: 2023-06-28 11:57:07
  * @LastEditors: jinqili0310 jinqi.li.310@gmail.com
- * @LastEditTime: 2023-07-13 17:17:06
+ * @LastEditTime: 2023-07-27 16:29:14
  * @FilePath: \felho-fullpage\src\app\tinctures\page.js
  */
 'use client'
@@ -10,12 +10,13 @@ import { useState, useEffect, useRef } from "react";
 import ReactFullpage from "@fullpage/react-fullpage";
 import '../fullvideo.css';
 import BackgroundVideo from "../components/videoBg";
+import BackgroundVideoMobile from "../components/videoMb";
 import { CSSTransition } from 'react-transition-group';
 
 export default function Tinctures() {
     const fullpages = [
         {
-            h1: `Felhö DREAM`,
+            h1: "Felhö DREAM",
             h5: "Full Spectrum Tincture",
             p: "Our Dream tincture will have you calm and relaxed - ready for a good night's sleep! The combination of CBD + CBN provides a calm and relaxing experience that puts your head in the right place for a full-8 hours of rest.",
             url: "https://www.felho.com/dream-full-spectrum-cbd-tincture.html",
@@ -45,6 +46,32 @@ export default function Tinctures() {
         "841318121",
         "841314896",
     ];
+
+    const mobileVideos = [
+        "848805100",
+        "848800894",
+        "848806948",
+    ];
+
+    const size = useWindowSize();
+
+    const [windowWidth, setWindowWidth] = useState(
+        typeof window !== 'undefined' ? window.innerWidth : 800
+    );
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const handleResize = () => {
+                setWindowWidth(window.innerWidth);
+            }
+
+            window.addEventListener('resize', handleResize);
+
+            return () => {
+                window.removeEventListener('resize', handleResize);
+            }
+        }
+    }, []);
     
     const [activeSection, setActiveSection] = useState(-1);
     const fullpageRef = useRef(null);
@@ -57,65 +84,116 @@ export default function Tinctures() {
         }
     }, [activeSection]);
 
-    // useEffect(() => {
-    //     function handleWheel(event) {
-    //         if (
-    //             (event.deltaY < 0 && window.scrollY <= 0) ||
-    //             (event.deltaY > 0 && window.scrollY + window.innerHeight >= document.body.offsetHeight)
-    //         ) {
-    //             window.parent.postMessage({ message: 'scrollParent', deltaY: event.deltaY }, '*');
-    //         }
-    //     }
-
-    //     window.addEventListener('wheel', handleWheel);
-
-    //     // cleanup function
-    //     return () => {
-    //         window.removeEventListener('wheel', handleWheel);
-    //     };
-    // }, []);
-
     if (!fullpages.length) return null;
+    console.log(windowWidth);
 
-    return (
-        <div className="tincture-app">
-            <ReactFullpage
-                debug
-                licenseKey={"LZX76-2TN0J-J5M66-9RKN9-QVXMN"}
-                // fullpage options
-                afterLoad={(origin, destination, direction) => {
-                    setActiveSection(destination.index);
-                }}
-                navigation
-                anchors={["dream", "relax", "vital"]}
-                sectionsColor={colors}
-                render={() => (
-                    <ReactFullpage.Wrapper ref={fullpageRef}>
-                        {videos.map((id, index) => (
-                            <div className={`section section_${index}`} key={index}>
-                                <a href={fullpages[index].url} target="_parent">
-                                    <BackgroundVideo videoSrc={id} playing={activeSection === index} />
-                                    <CSSTransition
-                                        in={activeSection === index}
-                                        timeout={3000}
-                                        classNames={`video-text-${index % 2 === 0 ? 'right' : 'left'}`}
-                                        unmountOnExit
-                                    >
-                                        <div className="video_text_bg">
-                                            <div className="video_text">
-                                                <h1>{fullpages[index].h1}</h1>
-                                                <h5>{fullpages[index].h5}</h5>
-                                                <p>{fullpages[index].p}</p>
-                                                <a href={fullpages[index].url} target="_parent">SHOP NOW</a>
+    if (size.width > 767) {
+        return (
+            <div className="tincture-app">
+                <ReactFullpage
+                    debug
+                    licenseKey={"LZX76-2TN0J-J5M66-9RKN9-QVXMN"}
+                    // fullpage options
+                    afterLoad={(origin, destination, direction) => {
+                        setActiveSection(destination.index);
+                    }}
+                    navigation
+                    anchors={["dream", "relax", "vital"]}
+                    sectionsColor={colors}
+                    render={() => (
+                        <ReactFullpage.Wrapper ref={fullpageRef}>
+                            {videos.map((id, index) => (
+                                <div className={`section section_${index}`} key={index}>
+                                    <a href={fullpages[index].url} target="_parent">
+                                        <BackgroundVideo videoSrc={id} playing={activeSection === index} />
+                                        <CSSTransition
+                                            in={activeSection === index}
+                                            timeout={3000}
+                                            classNames={`video-text-${index % 2 === 0 ? 'right' : 'left'}`}
+                                            unmountOnExit
+                                        >
+                                            <div className="video_text_bg">
+                                                <div className="video_text">
+                                                    <h1>{fullpages[index].h1}</h1>
+                                                    <h5>{fullpages[index].h5}</h5>
+                                                    <p>{fullpages[index].p}</p>
+                                                    <a href={fullpages[index].url} target="_parent">SHOP NOW</a>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </CSSTransition>
-                                </a>
-                            </div>
-                        ))}
-                    </ReactFullpage.Wrapper>
-                )}
-            />
-        </div>
-    );
+                                        </CSSTransition>
+                                    </a>
+                                </div>
+                            ))}
+                        </ReactFullpage.Wrapper>
+                    )}
+                />
+            </div>
+        );
+    } else {
+        return (
+            <div className="tincture-app">
+                <ReactFullpage
+                    debug
+                    licenseKey={"LZX76-2TN0J-J5M66-9RKN9-QVXMN"}
+                    // fullpage options
+                    afterLoad={(origin, destination, direction) => {
+                        setActiveSection(destination.index);
+                    }}
+                    navigation
+                    anchors={["dream", "relax", "vital"]}
+                    sectionsColor={colors}
+                    render={() => (
+                        <ReactFullpage.Wrapper ref={fullpageRef}>
+                            {mobileVideos.map((id, index) => (
+                                <div className={`section section_${index}`} key={index}>
+                                    <a href={fullpages[index].url} target="_parent">
+                                        <BackgroundVideoMobile videoSrc={id} playing={activeSection === index} />
+                                        <CSSTransition
+                                            in={activeSection === index}
+                                            timeout={3000}
+                                            classNames={`video-text-${index % 2 === 0 ? 'right' : 'left'}`}
+                                            unmountOnExit
+                                        >
+                                            <div className="video_text_bg_mobile">
+                                                <div className="video_text_mobile">
+                                                    <h1>{fullpages[index].h1}</h1>
+                                                    <h5>{fullpages[index].h5}</h5>
+                                                    <p>{fullpages[index].p}</p>
+                                                    <a href={fullpages[index].url} target="_parent">SHOP NOW</a>
+                                                </div>
+                                            </div>
+                                        </CSSTransition>
+                                    </a>
+                                </div>
+                            ))}
+                        </ReactFullpage.Wrapper>
+                    )}
+                />
+            </div>
+        );
+    }
+}
+
+function useWindowSize() {
+    const [windowSize, setWindowSize] = useState({
+      width: undefined,
+      height: undefined,
+    });
+  
+    useEffect(() => {
+      function handleResize() {
+        setWindowSize({
+          width: window.innerWidth,
+          height: window.innerHeight,
+        });
+      }
+      
+      window.addEventListener("resize", handleResize);
+    
+      handleResize();
+      
+      return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
+    return windowSize;
 }
