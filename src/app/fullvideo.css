@@ -192,6 +192,10 @@ h1, h5, p, a {
 
 /* Tinctures */
 
+.tincture-app .section_0 .video_text, .tincture-app .section_1 .video_text, .tincture-app .section_2 .video_text {
+    padding: 20px calc(50px + 3vw) 0 calc(50px + 3vw);
+}
+
 .tincture-app .video_text_mobile,
 .topical-app .video_text_mobile {
     background-size: 100% 100%;
@@ -205,7 +209,7 @@ h1, h5, p, a {
 .tincture-app .section_0 .video_text {
     background-image: url("../../public/dream-text.png");
     right: 0;
-    margin-right: -40px;
+    margin-right: -45px;
 }
 
 .tincture-app .section_1 .video_text {
@@ -217,7 +221,7 @@ h1, h5, p, a {
 .tincture-app .section_2 .video_text {
     background-image: url("../../public/vital-text.png");
     right: 0;
-    margin-right: -40px;
+    margin-right: -45px;
 }
 
 .tincture-app .section_0 .video_text_mobile {
