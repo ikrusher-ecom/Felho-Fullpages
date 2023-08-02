@@ -1,7 +1,7 @@
 /*
  * @Date: 2023-06-28 11:57:07
  * @LastEditors: jinqili0310 jinqi.li.310@gmail.com
- * @LastEditTime: 2023-07-27 16:29:14
+ * @LastEditTime: 2023-08-02 09:30:38
  * @FilePath: \felho-fullpage\src\app\tinctures\page.js
  */
 'use client'
@@ -74,15 +74,28 @@ export default function Tinctures() {
     }, []);
     
     const [activeSection, setActiveSection] = useState(-1);
-    const fullpageRef = useRef(null);
+    const [transitionStart, setTransitionStart] = useState(false);
+
+    let fullpageApi = null;
+
+    // useEffect(() => {
+    //     if (activeSection === -1) {
+    //         setTimeout(() => setActiveSection(0), 50);
+    //     } else if (fullpageApi) {
+    //         fullpageApi.moveTo(activeSection + 1);
+    //     }
+    // }, [activeSection, fullpageApi]);
 
     useEffect(() => {
         if (activeSection === -1) {
-            setTimeout(() => setActiveSection(0), 50);
-        } else if (fullpageRef.current) {
-            fullpageRef.current.fullpageApi.moveTo(activeSection + 1);
+            setTimeout(() => {
+                setActiveSection(0);
+                setTransitionStart(true);
+            }, 50);
+        } else if (fullpageApi) {
+            fullpageApi.moveTo(activeSection + 1);
         }
-    }, [activeSection]);
+    }, [activeSection, fullpageApi]);
 
     if (!fullpages.length) return null;
     console.log(windowWidth);
@@ -95,37 +108,41 @@ export default function Tinctures() {
                     licenseKey={"LZX76-2TN0J-J5M66-9RKN9-QVXMN"}
                     // fullpage options
                     afterLoad={(origin, destination, direction) => {
+                        fullpageApi = fullpageApi || window.fullpage_api;
                         setActiveSection(destination.index);
                     }}
                     navigation
                     anchors={["dream", "relax", "vital"]}
                     sectionsColor={colors}
-                    render={() => (
-                        <ReactFullpage.Wrapper ref={fullpageRef}>
-                            {videos.map((id, index) => (
-                                <div className={`section section_${index}`} key={index}>
-                                    <a href={fullpages[index].url} target="_parent">
-                                        <BackgroundVideo videoSrc={id} playing={activeSection === index} />
-                                        <CSSTransition
-                                            in={activeSection === index}
-                                            timeout={3000}
-                                            classNames={`video-text-${index % 2 === 0 ? 'right' : 'left'}`}
-                                            unmountOnExit
-                                        >
-                                            <div className="video_text_bg">
-                                                <div className="video_text">
-                                                    <h1>{fullpages[index].h1}</h1>
-                                                    <h5>{fullpages[index].h5}</h5>
-                                                    <p>{fullpages[index].p}</p>
-                                                    <a href={fullpages[index].url} target="_parent">SHOP NOW</a>
+                    render={({ state, fullpageApi }) => {
+                        fullpageApi = fullpageApi;
+                        return (
+                            <ReactFullpage.Wrapper>
+                                {videos.map((id, index) => (
+                                    <div className={`section section_${index}`} key={index}>
+                                        <a href={fullpages[index].url} target="_parent">
+                                            <BackgroundVideo videoSrc={id} playing={activeSection === index} />
+                                            <CSSTransition
+                                                in={transitionStart && activeSection === index}
+                                                timeout={3000}
+                                                classNames={`video-text-${index % 2 === 0 ? 'right' : 'left'}`}
+                                                unmountOnExit
+                                            >
+                                                <div className="video_text_bg">
+                                                    <div className="video_text">
+                                                        <h1>{fullpages[index].h1}</h1>
+                                                        <h5>{fullpages[index].h5}</h5>
+                                                        <p>{fullpages[index].p}</p>
+                                                        <a href={fullpages[index].url} target="_parent">SHOP NOW</a>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </CSSTransition>
-                                    </a>
-                                </div>
-                            ))}
-                        </ReactFullpage.Wrapper>
-                    )}
+                                            </CSSTransition>
+                                        </a>
+                                    </div>
+                                ))}
+                            </ReactFullpage.Wrapper>
+                        )
+                    }}
                 />
             </div>
         );
@@ -137,37 +154,41 @@ export default function Tinctures() {
                     licenseKey={"LZX76-2TN0J-J5M66-9RKN9-QVXMN"}
                     // fullpage options
                     afterLoad={(origin, destination, direction) => {
+                        fullpageApi = fullpageApi || window.fullpage_api;
                         setActiveSection(destination.index);
                     }}
                     navigation
                     anchors={["dream", "relax", "vital"]}
                     sectionsColor={colors}
-                    render={() => (
-                        <ReactFullpage.Wrapper ref={fullpageRef}>
-                            {mobileVideos.map((id, index) => (
-                                <div className={`section section_${index}`} key={index}>
-                                    <a href={fullpages[index].url} target="_parent">
-                                        <BackgroundVideoMobile videoSrc={id} playing={activeSection === index} />
-                                        <CSSTransition
-                                            in={activeSection === index}
-                                            timeout={3000}
-                                            classNames={`video-text-${index % 2 === 0 ? 'right' : 'left'}`}
-                                            unmountOnExit
-                                        >
-                                            <div className="video_text_bg_mobile">
-                                                <div className="video_text_mobile">
-                                                    <h1>{fullpages[index].h1}</h1>
-                                                    <h5>{fullpages[index].h5}</h5>
-                                                    <p>{fullpages[index].p}</p>
-                                                    <a href={fullpages[index].url} target="_parent">SHOP NOW</a>
+                    render={({ state, fullpageApi }) => {
+                        fullpageApi = fullpageApi;
+                        return (
+                            <ReactFullpage.Wrapper>
+                                {mobileVideos.map((id, index) => (
+                                    <div className={`section section_${index}`} key={index}>
+                                        <a href={fullpages[index].url} target="_parent">
+                                            <BackgroundVideoMobile videoSrc={id} playing={activeSection === index} />
+                                            <CSSTransition
+                                                in={transitionStart && activeSection === index}
+                                                timeout={3000}
+                                                classNames={`video-text-${index % 2 === 0 ? 'right' : 'left'}`}
+                                                unmountOnExit
+                                            >
+                                                <div className="video_text_bg_mobile">
+                                                    <div className="video_text_mobile">
+                                                        <h1>{fullpages[index].h1}</h1>
+                                                        <h5>{fullpages[index].h5}</h5>
+                                                        <p>{fullpages[index].p}</p>
+                                                        <a href={fullpages[index].url} target="_parent">SHOP NOW</a>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </CSSTransition>
-                                    </a>
-                                </div>
-                            ))}
-                        </ReactFullpage.Wrapper>
-                    )}
+                                            </CSSTransition>
+                                        </a>
+                                    </div>
+                                ))}
+                            </ReactFullpage.Wrapper>
+                        )
+                    }}
                 />
             </div>
         );

@@ -1,7 +1,7 @@
 /*
  * @Date: 2023-06-28 11:57:07
  * @LastEditors: jinqili0310 jinqi.li.310@gmail.com
- * @LastEditTime: 2023-07-27 16:27:37
+ * @LastEditTime: 2023-08-02 09:32:16
  * @FilePath: \felho-fullpage\src\app\vaporizers\page.js
  */
 'use client'
@@ -61,11 +61,15 @@ export default function Vaporizers() {
     const size = useWindowSize();
     
     const [activeSection, setActiveSection] = useState(-1);
+    const [transitionStart, setTransitionStart] = useState(false);
     const fullpageRef = useRef(null);
 
     useEffect(() => {
         if (activeSection === -1) {
-            setTimeout(() => setActiveSection(0), 50);
+            setTimeout(() => {
+                setActiveSection(0);
+                setTransitionStart(true);
+            }, 50);
         } else if (fullpageRef.current) {
             fullpageRef.current.fullpageApi.moveTo(activeSection + 1);
         }
@@ -93,7 +97,7 @@ export default function Vaporizers() {
                                     <a href={fullpages[index].url} target="_parent">
                                         <BackgroundVideo videoSrc={id} playing={activeSection === index} />
                                         <CSSTransition
-                                            in={activeSection === index}
+                                            in={transitionStart && activeSection === index}
                                             timeout={3000}
                                             classNames={`video-text-${index % 2 === 0 ? 'right' : 'left'}`}
                                             unmountOnExit
@@ -135,7 +139,7 @@ export default function Vaporizers() {
                                     <a href={fullpages[index].url} target="_parent">
                                         <BackgroundVideoMobile videoSrc={id} playing={activeSection === index} />
                                         <CSSTransition
-                                            in={activeSection === index}
+                                            in={transitionStart && activeSection === index}
                                             timeout={3000}
                                             classNames={`video-text-${index % 2 === 0 ? 'right' : 'left'}`}
                                             unmountOnExit
