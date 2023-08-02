@@ -1,7 +1,7 @@
 /*
  * @Date: 2023-06-28 11:57:07
  * @LastEditors: jinqili0310 jinqi.li.310@gmail.com
- * @LastEditTime: 2023-08-02 09:31:44
+ * @LastEditTime: 2023-08-02 11:00:21
  * @FilePath: \felho-fullpage\src\app\topicals\page.js
  */
 'use client'
@@ -64,7 +64,7 @@ export default function Topicals() {
             setTimeout(() => {
                 setActiveSection(0);
                 setTransitionStart(true);
-            }, 50);
+            }, 1000);
         } else if (fullpageRef.current) {
             fullpageRef.current.fullpageApi.moveTo(activeSection + 1);
         }

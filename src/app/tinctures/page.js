@@ -1,7 +1,7 @@
 /*
  * @Date: 2023-06-28 11:57:07
  * @LastEditors: jinqili0310 jinqi.li.310@gmail.com
- * @LastEditTime: 2023-08-02 09:30:38
+ * @LastEditTime: 2023-08-02 11:00:15
  * @FilePath: \felho-fullpage\src\app\tinctures\page.js
  */
 'use client'
@@ -91,7 +91,7 @@ export default function Tinctures() {
             setTimeout(() => {
                 setActiveSection(0);
                 setTransitionStart(true);
-            }, 50);
+            }, 1000);
         } else if (fullpageApi) {
             fullpageApi.moveTo(activeSection + 1);
         }

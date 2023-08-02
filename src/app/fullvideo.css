@@ -158,7 +158,7 @@ h1, h5, p, a {
 
 .video-text-right-enter-active {
     transform: translateX(0);
-    transition: transform 3000ms ease-in-out;
+    transition: transform 2000ms ease-in-out;
 }
 
 .video-text-right-exit {
@@ -167,7 +167,7 @@ h1, h5, p, a {
 
 .video-text-right-exit-active {
     transform: translateX(100%);
-    transition: transform 3000ms ease-in-out;
+    transition: transform 2000ms ease-in-out;
 }
 
 /* For relax section, move in from the left */
@@ -178,7 +178,7 @@ h1, h5, p, a {
 
 .video-text-left-enter-active {
     transform: translateX(0);
-    transition: transform 3000ms ease-in-out;
+    transition: transform 2000ms ease-in-out;
 }
 
 .video-text-left-exit {
@@ -187,7 +187,7 @@ h1, h5, p, a {
 
 .video-text-left-exit-active {
     transform: translateX(-100%);
-    transition: transform 3000ms ease-in-out;
+    transition: transform 2000ms ease-in-out;
 }
 
 /* Tinctures */
