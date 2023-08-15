@@ -1,7 +1,7 @@
 /*
  * @Date: 2023-06-30 16:05:05
  * @LastEditors: jinqili0310 jinqi.li.310@gmail.com
- * @LastEditTime: 2023-07-27 15:07:53
+ * @LastEditTime: 2023-08-15 14:17:59
  * @FilePath: \felho-fullpage\src\app\components\videoMb.js
  */
 import React, { useEffect, useState } from 'react'
@@ -46,6 +46,19 @@ function Video({ videoSrc, playing }) {
 }
 
 export default function BackgroundVideoMobile({ videoSrc, playing }) {
+    const [thumbnailUrl, setThumbnailUrl] = useState('');
+
+    // 23815ffde8250d16f1868f0ef9ce0975
+    useEffect(() => {
+        fetch(`https://api.vimeo.com/videos/${videoSrc}?access_token=23815ffde8250d16f1868f0ef9ce0975`)
+        .then(response => response.json())
+        .then(data => {
+            setThumbnailUrl(data.pictures.sizes[3].link);
+        })
+        .catch(error => console.error('Error fetching video thumbnail:', error));
+    }, [videoSrc]);
+    console.log(thumbnailUrl);
+    
     return (
         <div
             style={{
@@ -59,6 +72,10 @@ export default function BackgroundVideoMobile({ videoSrc, playing }) {
                 right: "0",
                 top: "0",
                 zIndex: "-1",
+                backgroundImage: `url(${thumbnailUrl})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center center",
+                backgroundRepeat: "no-repeat"
             }}>
             <Video videoSrc={videoSrc} playing={playing} />
         </div>
