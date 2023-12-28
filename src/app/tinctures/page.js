@@ -19,7 +19,7 @@ export default function Tinctures() {
             h1: "Felhö DREAM",
             h5: "Full Spectrum Tincture",
             p: "Our Dream tincture will have you calm and relaxed - ready for a good night's sleep! The combination of CBD + CBN provides a calm and relaxing experience that puts your head in the right place for a full-8 hours of rest.",
-            url: "https://www.felho.com/dream-full-spectrum-cbd-tincture.html",
+            url: "https://felho-dev.myshopify.com/products/dream-full-spectrum-tincture",
         },
         {
             h1: "Felhö RELAX",

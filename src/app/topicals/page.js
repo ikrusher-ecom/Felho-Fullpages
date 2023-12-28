@@ -19,19 +19,19 @@ export default function Topicals() {
             h1: "CALMING BALM",
             h5: "CBD Calming Balm",
             p: "Feel relief at a much deeper level. This unique balm lets your sore joints and muscles enjoy instant gratification when applied directly. By combining camphor wintergreen with potent peppermint, you’ll get a rich, soothing sensation that’ll last for hours to come.",
-            url: "https://www.felho.com/calming-1000mg-cbd-balm.html",
+            url: "https://felho-dev.myshopify.com/products/calming-balm",
         },
         {
             h1: "COOLING GEL",
             h5: "CBD Cooling Gel",
             p: "Relief is how we roll. Our 500mg pure CBD cooling gel is perfect for after the gym, when sore muscles, aches, and pains are at their peak. It’s cooling wintergreen scent will give you instant gratification and evaporate soreness for ultimate comfort.",
-            url: "https://www.felho.com/cooling-500mg-cbd-gel.html",
+            url: "https://felho-dev.myshopify.com/products/cooling-gel",
         },
         {
             h1: "HEATING GEL",
             h5: "CBD Heating Gel",
             p: "Turn up the heat and turn down the hurt. This CBD heating lotion helps relieve sore muscles and joint pain. Our proprietary oil is a soothing blend of premium, USA-grown hemp and naturally scented oils, designed to propel a natural heating sensation perfect for an after-gym session. Give the therapeutic properties of CBD a try.",
-            url: "https://www.felho.com/heating-500mg-cbd-gel.html",
+            url: "https://felho-dev.myshopify.com/products/heating-gel",
         },
     ];
 
