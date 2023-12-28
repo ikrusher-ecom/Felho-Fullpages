@@ -25,13 +25,13 @@ export default function Tinctures() {
             h1: "Felhö RELAX",
             h5: "Hemp Supplement",
             p: "With 1000mg of Broad-Spectrum CBD oil, you will feel lighter than air. Our CBD tincture provides the perfect effects for those who are looking to relax after a long day of work or help with any stressful situation.",
-            url: "/products/relax-full-spectrum-tincture",
+            url: "https://felho-dev.myshopify.com/products/relax-full-spectrum-tincture",
         },
         {
             h1: "Felhö VITAL",
             h5: "Hemp Supplement",
             p: "With the carefully curated combination of CBD and CBG, you will feel calm, comfortable, and uplifted. CBG delivers an optimal sense of relief from sore muscles/ joints due to the anti-inflammatory nature of CBG. On top of that, our wellness blend acts as a great hunger manipulator to help those looking to increase their appetite.",
-            url: "/products/vital-full-spectrum-tincture",
+            url: "https://felho-dev.myshopify.com/products/vital-full-spectrum-tincture",
         },
     ];
 
