@@ -74,7 +74,7 @@ h1, h5, p, a {
 
 .video_text h1 {
     text-align: left;
-    font-size: 5vw;
+    font-size: calc(24px + 3vw);
     line-height: 1.25;
     letter-spacing: 2px;
     font-weight: 900;
@@ -91,7 +91,7 @@ h1, h5, p, a {
 }
 
 .video_text h5 {
-    font-size: calc(20px + 1vw);
+    font-size: calc(16px + 1vw);
     line-height: 1;
     font-weight: 600;
     text-align: left;
@@ -99,7 +99,7 @@ h1, h5, p, a {
 }
 
 .video_text_mobile h5 {
-    font-size: calc(20px + 1vw);
+    font-size: 18px;
     line-height: 1;
     font-weight: 600;
     text-align: left;
@@ -113,7 +113,7 @@ h1, h5, p, a {
     text-align: center;
     line-height: 1;
     height: auto;
-    font-size: calc(16px + 0.5vw);
+    font-size: calc(16px + 0.25vw);
     border: none;
     margin: 1em 0;
     z-index: 9;
@@ -136,7 +136,7 @@ h1, h5, p, a {
 
 .video_text p {
     width: 100%;
-    font-size: calc(16px + 0.5vw);
+    font-size: 18px;
     line-height: 1.25;
 }
 
